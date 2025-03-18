@@ -1,0 +1,815 @@
+name,team,position,value,predicted_goals
+Bukayo Saka,0,3,90,2.0
+Erling Haaland,12,1,143,2.0
+Conor Gallagher,6,3,54,2.0
+Rodrigo Muniz Carvalho,9,1,44,2.0
+Bruno Guimarães Rodriguez Moura,14,3,58,2.0
+Declan Rice,0,3,54,1.0
+Cameron Archer,16,1,43,1.0
+Bobby De Cordova-Reid,9,3,53,1.0
+Dara O'Shea,5,0,44,1.0
+Douglas Luiz Soares de Paulo,1,3,55,1.0
+Rasmus Højlund,13,1,70,1.0
+Scott McTominay,13,3,46,1.0
+Luis Díaz,10,3,74,1.0
+Fabian Schär,14,0,53,1.0
+William Saliba,0,0,56,1.0
+James McAtee,16,3,44,1.0
+Ivan Toney,3,1,81,1.0
+Diogo Teixeira da Silva,10,3,82,1.0
+Carlton Morris,11,1,50,1.0
+Marcos Senesi,2,0,45,1.0
+Darwin Núñez Ribeiro,10,1,75,1.0
+Brennan Johnson,17,3,58,1.0
+Leandro Trossard,0,3,65,1.0
+Christian Nørgaard,3,3,53,1.0
+Callum Hudson-Odoi,15,3,47,1.0
+Jefferson Lerma Solís,7,3,47,1.0
+Gabriel dos Santos Magalhães,0,0,50,1.0
+Vini de Souza Costa,16,3,50,1.0
+Enzo Fernández,6,3,48,1.0
+Anthony Elanga,15,3,51,1.0
+Pape Matar Sarr,17,3,44,1.0
+Pascal Groß,4,3,64,1.0
+Tom Davies,16,3,50,0.0
+Charles Sagoe,0,3,45,0.0
+Ethan Pinnock,3,0,46,0.0
+Jay Stansfield,9,1,45,0.0
+Matz Sels,15,2,45,0.0
+Daniel Castelo Podence,19,3,53,0.0
+Ryan Yates,15,3,48,0.0
+Nicolò Zaniolo,1,3,54,0.0
+Oliver McBurnie,16,1,54,0.0
+Frank Onyeka,3,3,49,0.0
+Naouirou Ahamada,7,3,43,0.0
+Philip Billing,2,3,52,0.0
+Gabriel Słonina,6,2,40,0.0
+Marc Guéhi,7,0,44,0.0
+Seamus Coleman,8,0,44,0.0
+Dejan Kulusevski,17,3,69,0.0
+Siriki Dembélé,2,3,45,0.0
+Matthew Dibley-Dias,9,3,45,0.0
+Antwoine Hackford,16,1,44,0.0
+Eberechi Eze,7,3,60,0.0
+Maxime Esteve,5,0,40,0.0
+Valintino Adedokun,3,0,40,0.0
+Mackenzie Hunt,8,3,45,0.0
+Amari'i Bell,11,0,39,0.0
+Dele Alli,8,3,48,0.0
+Noni Madueke,6,3,53,0.0
+Milos Kerkez,2,0,44,0.0
+Ty Barnett,19,3,45,0.0
+Luke Berry,11,3,46,0.0
+Kortney Hause,1,0,39,0.0
+Thilo Kehrer,18,0,42,0.0
+Will Hughes,7,3,49,0.0
+Alexander Isak,14,1,75,0.0
+John-Kymani Gordon,7,1,45,0.0
+Cheikhou Kouyaté,15,3,48,0.0
+Jonjo Shelvey,15,3,48,0.0
+Cédric Alves Soares,0,0,39,0.0
+Pierre-Emerick Aubameyang,6,1,65,0.0
+Garang Kuol,14,3,45,0.0
+Radu Dragusin,17,0,44,0.0
+Mykhailo Mudryk,6,3,63,0.0
+Willy Kambwala,13,0,39,0.0
+Roméo Lavia,6,3,49,0.0
+Fred Onyedinma,11,3,50,0.0
+Ryan Fredericks,2,0,43,0.0
+Gustavo Henrique Furtado Scarpa,15,3,45,0.0
+Wesley Fofana,6,0,44,0.0
+Aaron Hickey,3,0,44,0.0
+Mads Bidstrup,3,3,45,0.0
+Solly March,4,3,61,0.0
+David Datro Fofana,5,1,50,0.0
+Joe Hugill,13,1,45,0.0
+Kacper Kozłowski,4,3,45,0.0
+Joe Rothwell,2,3,48,0.0
+Matt Macey,11,2,40,0.0
+Ben Doak,10,3,43,0.0
+Sander Berge,5,3,47,0.0
+Mathias Jensen,3,3,54,0.0
+Fabio Henrique Tavares,10,3,50,0.0
+Louie Marsh,16,1,45,0.0
+Max Kilman,19,0,45,0.0
+Lewis Miley,14,3,45,0.0
+Jack Cork,5,3,48,0.0
+Yasin Ayari,4,3,45,0.0
+Anthony Martial,13,1,64,0.0
+Oliwier Zych,1,2,40,0.0
+Elliot Anderson,14,3,42,0.0
+Danny Welbeck,4,1,57,0.0
+Deivid Washington de Souza Eugênio,6,1,45,0.0
+Carlos Vinícius Alves Morais,9,1,45,0.0
+Olu Aina,15,0,45,0.0
+Conor Bradley,10,0,41,0.0
+Lewis Hall,14,0,43,0.0
+Rodrigo Hernandez,12,3,56,0.0
+Benjamin Fredrick,3,0,40,0.0
+Daniel Muñoz,7,0,45,0.0
+Malo Gusto,6,0,42,0.0
+Kevin De Bruyne,12,3,108,0.0
+George Shelvey,15,2,39,0.0
+Nathan Aké,12,0,50,0.0
+Lucas Bergström,6,2,39,0.0
+Victor Lindelöf,13,0,45,0.0
+Femi Seriki,16,0,39,0.0
+Bendegúz Bolla,19,0,40,0.0
+Hamed Traorè,2,3,47,0.0
+Callum Wilson,14,1,78,0.0
+Allan Saint-Maximin,14,3,60,0.0
+Lewis Orford,18,3,45,0.0
+Han-Noah Massengo,5,3,49,0.0
+Zeki Amdouni,5,1,53,0.0
+Steven Alzate,4,3,44,0.0
+Jóhann Berg Gudmundsson,5,3,48,0.0
+Tim Krul,11,2,44,0.0
+Keinan Davis,1,1,49,0.0
+Bruno Borges Fernandes,13,3,82,0.0
+Jeremy Sarmiento Morante,4,3,45,0.0
+Lewis Cook,2,3,50,0.0
+Issa Kaboré,11,0,40,0.0
+Sam Surridge,15,1,45,0.0
+Reece Burke,11,0,40,0.0
+Jesurun Rak-Sakyi,7,3,45,0.0
+Clément Lenglet,1,0,45,0.0
+Gabriel Fernando de Jesus,0,1,79,0.0
+Hannes Delcroix,5,0,40,0.0
+Eric Dier,17,0,42,0.0
+Kaide Gordon,10,3,45,0.0
+Joel Ward,7,0,45,0.0
+Tyrese Francois,9,3,44,0.0
+Oleksandr Zinchenko,0,0,52,0.0
+Bashir Humphreys,6,0,40,0.0
+Josh Bowler,15,3,45,0.0
+Mads Roerslev Rasmussen,3,0,44,0.0
+Calvin Bassey,9,0,44,0.0
+James Ward-Prowse,18,3,60,0.0
+Konstantinos Tsimikas,10,0,45,0.0
+Mahmoud Dahoud,4,3,48,0.0
+Ian Maatsen,6,3,51,0.0
+Ryan Gravenberch,10,3,50,0.0
+Sofyan Amrabat,13,3,50,0.0
+Max Lowe,16,0,43,0.0
+Joe Whitworth,7,2,39,0.0
+Thomas Cannon,8,1,45,0.0
+Hannibal Mejbri,13,3,43,0.0
+Boubacar Kamara,1,3,50,0.0
+Andrey Nascimento dos Santos,6,3,42,0.0
+Loris Karius,14,2,39,0.0
+Joshua Duffus,4,3,44,0.0
+Bart Verbruggen,4,2,44,0.0
+Tahith Chong,11,3,47,0.0
+Morgan Sanson,1,3,45,0.0
+Bernd Leno,9,2,48,0.0
+Josh Dasilva,3,3,47,0.0
+Harvey Barnes,14,3,62,0.0
+Cesare Casadei,6,3,45,0.0
+Mateo Kovačić,12,3,47,0.0
+John Fleck,16,3,49,0.0
+Josh Cullen,5,3,50,0.0
+Thomas Strakosha,3,2,39,0.0
+Fábio Ferreira Vieira,0,3,54,0.0
+Michael Ndiweni,14,1,44,0.0
+Cheick Doucouré,7,3,49,0.0
+Joe Hodge,19,3,44,0.0
+Omari Forson,13,3,44,0.0
+Joel Matip,10,0,48,0.0
+Callum Scanlon,10,0,39,0.0
+Davinson Sánchez,17,0,44,0.0
+Craig Dawson,19,0,45,0.0
+Toti António Gomes,19,0,44,0.0
+Nayef Aguerd,18,0,44,0.0
+Diogo Dalot Teixeira,13,0,51,0.0
+Amadou Onana,8,3,47,0.0
+Adrián San Miguel del Castillo,10,2,39,0.0
+Youssef Ramalho Chermiti,8,1,48,0.0
+Hwang Ui-jo,15,1,44,0.0
+Ben Mee,3,0,48,0.0
+Joe Worrall,15,0,43,0.0
+Diego Carlos Santos Silva,1,0,44,0.0
+Arijanet Muric,5,2,43,0.0
+Samuel Bastien,5,3,49,0.0
+Ashley Young,8,0,44,0.0
+Facundo Buonanotte,4,3,47,0.0
+Aaron Cresswell,18,0,42,0.0
+Sergio Reguilón,3,0,44,0.0
+Morgan Gibbs-White,15,3,57,0.0
+Raphaël Varane,13,0,49,0.0
+Igor Julio dos Santos de Paulo,4,0,43,0.0
+Brandon Williams,13,0,40,0.0
+Hugo Lloris,17,2,47,0.0
+Orel Mangala,15,3,50,0.0
+Noha Lemina,19,3,50,0.0
+Frederico Rodrigues de Paula Santos,13,3,50,0.0
+Marek Rodák,9,2,39,0.0
+Shandon Baptiste,3,3,43,0.0
+Michał Karbownik,4,0,40,0.0
+Mason Burstow,6,1,45,0.0
+André Onana,13,2,48,0.0
+Julián Álvarez,12,1,68,0.0
+Maxwel Cornet,18,3,52,0.0
+Terence Kongolo,9,0,40,0.0
+Caoimhin Kelleher,10,2,37,0.0
+Ivan Neves Abreu Cavaleiro,9,3,50,0.0
+Chris Mepham,2,0,43,0.0
+Ameen Al-Dakhil,5,0,38,0.0
+Louie Watson,11,3,44,0.0
+Julio Enciso,4,3,50,0.0
+Bertrand Traoré,1,3,50,0.0
+Christopher Nkunku,6,1,74,0.0
+Serge Aurier,15,0,45,0.0
+Tom Cairney,9,3,49,0.0
+Harry Arter,15,3,43,0.0
+Alex Matos,6,3,45,0.0
+Mohamed Dräger,15,0,40,0.0
+Rúnar Alex Rúnarsson,0,2,40,0.0
+Scott Carson,12,2,38,0.0
+Bénie Traoré,16,1,51,0.0
+Jurriën Timber,0,0,46,0.0
+Jordan Beyer,5,0,40,0.0
+Wes Foderingham,16,2,45,0.0
+Lewis Koumas,10,1,45,0.0
+Konstantinos Mavropanos,18,0,45,0.0
+Diego Manuel Jadon da Silva Moreira,6,3,45,0.0
+Odsonne Edouard,7,1,54,0.0
+Jamal Lowe,2,3,49,0.0
+Owen Dodgson,5,0,40,0.0
+Matt Ritchie,14,3,43,0.0
+Lyle Foster,5,1,47,0.0
+Aaron Ramsey,5,3,50,0.0
+Nathan Patterson,8,0,44,0.0
+Álvaro Fernández Carreras,13,0,40,0.0
+Nathan Redmond,5,3,47,0.0
+Deniz Undav,4,1,55,0.0
+Sandro Tonali,14,3,52,0.0
+Micah Hamilton,12,3,45,0.0
+Nathan Fraser,19,1,45,0.0
+Keane Lewis-Potter,3,3,47,0.0
+Dwight McNeil,8,3,54,0.0
+Cameron Peupion,4,3,45,0.0
+Moisés Caicedo Corozo,6,3,45,0.0
+Jorge Luiz Frello Filho,0,3,53,0.0
+Kenny Tete,9,0,44,0.0
+Harvey Griffiths,19,3,45,0.0
+Darko Churlinov,5,3,44,0.0
+Jack Harrison,8,3,55,0.0
+Jack Walton,11,2,40,0.0
+Timothy Castagne,9,0,45,0.0
+Adam Smith,2,0,44,0.0
+CJ Egan-Riley,5,0,39,0.0
+Romelu Lukaku Bolingoli,6,1,68,0.0
+James Garner,8,3,49,0.0
+Thiago Emiliano da Silva,6,0,50,0.0
+Rob Holding,7,0,43,0.0
+Aaron Wan-Bissaka,13,0,44,0.0
+James Milner,4,3,48,0.0
+Mathias Jorgensen,3,0,43,0.0
+Joe White,14,3,45,0.0
+Matty Cash,1,0,46,0.0
+Glen Rea,11,3,44,0.0
+Jaidon Anthony,2,3,49,0.0
+Tariq Lamptey,4,0,39,0.0
+Joseph Anang,18,2,40,0.0
+George Baldock,16,0,38,0.0
+Jeff Hendrick,14,3,44,0.0
+Mark Gillespie,14,2,39,0.0
+Ronnie Stutter,6,1,45,0.0
+Nélson Cabral Semedo,19,0,45,0.0
+Kevin Mbabu,9,0,40,0.0
+Tyrell Malacia,13,0,43,0.0
+Hákon Valdimarsson,3,2,40,0.0
+Đorđe Petrović,6,2,45,0.0
+Andros Townsend,11,3,50,0.0
+Chris Richards,7,0,39,0.0
+Jordan Henderson,10,3,50,0.0
+Daniel Gore,13,3,45,0.0
+Kyle Walker,12,0,55,0.0
+Jacob Brown,11,1,49,0.0
+Vicente Guaita,7,2,44,0.0
+Braian Ojeda Rodríguez,15,3,45,0.0
+Mason Holgate,16,0,40,0.0
+Rodrigo Bentancur,17,3,54,0.0
+Michael Olise,7,3,59,0.0
+Kalvin Phillips,18,3,47,0.0
+Oliver Skipp,17,3,45,0.0
+Leander Dendoncker,1,3,49,0.0
+Scott McKenna,15,0,44,0.0
+Michael Keane,8,0,43,0.0
+Sasa Kalajdzic,19,1,49,0.0
+Jarrod Bowen,18,3,79,0.0
+Matt Turner,15,2,39,0.0
+Raheem Sterling,6,3,70,0.0
+Kell Watts,14,0,40,0.0
+Mads Juel Andersen,11,0,39,0.0
+Sergi Canós Tenés,3,3,50,0.0
+Ryan Christie,2,3,50,0.0
+Yegor Yarmoliuk,3,3,43,0.0
+Robert Sánchez,6,2,45,0.0
+Gavin Kilkenny,2,3,43,0.0
+Armando Broja,9,1,49,0.0
+Dominic Solanke,2,1,70,0.0
+Chris Wood,15,1,49,0.0
+Alex Scott,2,3,49,0.0
+Jaden Philogene-Bidace,1,3,45,0.0
+Filip Marschall,1,2,40,0.0
+Jacob Ramsey,1,3,59,0.0
+Emiliano Marcondes,2,3,43,0.0
+Steven Benda,9,2,40,0.0
+Moussa Diaby,1,3,65,0.0
+James Wright,1,2,40,0.0
+João Cancelo,12,0,58,0.0
+Pau Torres,1,0,46,0.0
+Santiago Bueno,19,0,45,0.0
+Mohamed Elneny,0,3,44,0.0
+Jarrad Branthwaite,8,0,41,0.0
+Martin Ødegaard,0,3,84,0.0
+Matheus Luiz Nunes,12,3,48,0.0
+Luke Harris,9,3,45,0.0
+Tom King,19,2,39,0.0
+Rúben Gato Alves Dias,12,0,55,0.0
+Dan Potts,11,0,39,0.0
+Djed Spence,17,0,40,0.0
+Luke Thomas,16,0,40,0.0
+Emiliano Martínez Romero,1,2,52,0.0
+Tomáš Souček,18,3,49,0.0
+Ross Barkley,11,3,50,0.0
+Gonzalo Montiel,15,0,44,0.0
+Giovanni Reyna,15,3,50,0.0
+Joško Gvardiol,12,0,48,0.0
+Cole Palmer,6,3,59,0.0
+Alfie Doughty,11,0,46,0.0
+Loïc Mbe Soh,15,0,40,0.0
+Jordan Amissah,16,2,39,0.0
+Jacob Bruun Larsen,5,3,49,0.0
+Norberto Murara Neto,2,2,46,0.0
+Jérémy Doku,12,3,65,0.0
+Richie Laryea,15,0,45,0.0
+Joshua King,9,3,45,0.0
+Antonee Robinson,9,0,44,0.0
+Raúl Jiménez,9,1,51,0.0
+Jonathan Castro Otto,19,0,43,0.0
+Hwang Hee-chan,19,3,55,0.0
+Willian Borges da Silva,9,3,53,0.0
+Rhian Brewster,16,1,49,0.0
+Tom Lockyer,11,0,42,0.0
+Jordan Pickford,8,2,45,0.0
+Michael Olakigbe,3,3,45,0.0
+Anis Slimane,16,3,47,0.0
+Ryan Fraser,14,3,49,0.0
+Anthony Knockaert,9,3,44,0.0
+Harry Maguire,13,0,42,0.0
+Matheus Santos Carneiro Da Cunha,19,1,58,0.0
+Rhys Bennett,13,0,40,0.0
+Francisco Jorge Tomás Oliveira,19,3,45,0.0
+Ki-Jana Hoever,19,0,40,0.0
+Ivan Perišić,17,0,47,0.0
+Carlos Henrique Casimiro,13,3,53,0.0
+Saša Lukić,9,3,43,0.0
+Altay Bayindir,13,2,40,0.0
+Adam Webster,4,0,42,0.0
+Axel Disasi,6,0,49,0.0
+Enock Agyei,5,3,42,0.0
+Folarin Balogun,0,1,44,0.0
+Tyrone Mings,1,0,41,0.0
+Nicolás Domínguez,15,3,50,0.0
+Conor Coventry,18,3,43,0.0
+Ismaila Coulibaly,16,3,44,0.0
+Josh Brownhill,5,3,47,0.0
+Fraser Forster,17,2,38,0.0
+Luke Freeman,11,3,49,0.0
+Lewis Dunk,4,0,50,0.0
+César Azpilicueta,6,0,45,0.0
+Marcelo de Araújo Pitaluga Filho,10,2,40,0.0
+Lorenz Assignon,5,0,40,0.0
+Steve Cook,15,0,45,0.0
+Hjalmar Ekdal,5,0,39,0.0
+Alex Telles,13,0,45,0.0
+Luca Barrington,4,3,45,0.0
+José Malheiro de Sá,19,2,50,0.0
+João Neves Virgínia,8,2,39,0.0
+Christian Pulisic,6,3,55,0.0
+Bradley Ibrahim,0,3,45,0.0
+Tom Heaton,13,2,40,0.0
+Antoine Semenyo,2,1,45,0.0
+Jacob Wright,12,3,45,0.0
+Sepp van den Berg,10,0,40,0.0
+Anel Ahmedhodžić,16,0,43,0.0
+Max Aarons,2,0,44,0.0
+Josh Powell,15,0,39,0.0
+Cristian Romero,17,0,49,0.0
+Daniel Bentley,19,2,39,0.0
+Ethan Ampadu,6,0,40,0.0
+Jan Paul van Hecke,4,0,40,0.0
+Yasser Larouci,16,0,43,0.0
+Carney Chukwuemeka,6,3,42,0.0
+Odysseas Vlachodimos,15,2,45,0.0
+Ben Jackson,4,0,40,0.0
+Adam Davies,16,2,40,0.0
+Myles Peart-Harris,3,3,45,0.0
+Tyrick Mitchell,7,0,46,0.0
+James Maddison,17,3,80,0.0
+Cauley Woodrow,11,1,43,0.0
+Mohamed Salah,10,3,130,0.0
+Harry Kane,17,1,125,0.0
+Zack Steffen,12,2,39,0.0
+Taiwo Awoniyi,15,1,63,0.0
+Hugo Bueno López,19,0,44,0.0
+Ellis Simms,8,1,45,0.0
+Luke McNally,5,0,40,0.0
+Abdul Rahman Baba,6,0,40,0.0
+Dango Ouattara,2,3,47,0.0
+Daniel Jebbison,16,1,48,0.0
+Simon Adingra,4,3,50,0.0
+Scott Twine,5,3,49,0.0
+Daiki Hashioka,11,0,40,0.0
+Murillo Santiago Costa dos Santos,15,0,45,0.0
+Owen Hesketh,19,3,45,0.0
+Sergio Gómez,12,0,38,0.0
+Wataru Endo,10,3,54,0.0
+Danilo dos Santos de Oliveira,15,3,53,0.0
+David Raya Martin,0,2,49,0.0
+Jacob Murphy,14,3,48,0.0
+Reuell Walters,0,0,40,0.0
+Thomas Kaminski,11,2,45,0.0
+Amadou Diallo,14,3,45,0.0
+Jean-Philippe Mateta,7,1,49,0.0
+Ben Pearson,2,3,45,0.0
+Bailey Peacock-Farrell,5,2,40,0.0
+Felipe Augusto de Almeida Monteiro,15,0,44,0.0
+Michael Obafemi,5,1,49,0.0
+Kaoru Mitoma,4,3,64,0.0
+Albert Sambi Lokonga,11,3,49,0.0
+Victor da Silva,5,0,44,0.0
+Giulian Biancone,15,0,39,0.0
+Christian Eriksen,13,3,58,0.0
+Fábio Silva,19,1,52,0.0
+Ivo Grbic,16,2,45,0.0
+Alfie Whiteman,17,2,39,0.0
+James Tomkins,7,0,40,0.0
+William Osula,16,1,43,0.0
+Ollie Watkins,1,1,88,0.0
+Takehiro Tomiyasu,0,0,45,0.0
+Harrison Reed,9,3,45,0.0
+Manor Solomon,17,3,51,0.0
+Marcus Oliveira Alencar,0,3,45,0.0
+Eric Bailly,13,0,40,0.0
+Hakim Ziyech,6,3,54,0.0
+Gianluca Scamacca,18,1,60,0.0
+Wilson Odobert,5,3,50,0.0
+Jili Buyabu,16,0,40,0.0
+Benicio Baker-Boaitey,4,3,45,0.0
+Sean Longstaff,14,3,48,0.0
+Pelly Ruddock Mpanzu,11,3,47,0.0
+Danny Ings,18,1,56,0.0
+Donny van de Beek,13,3,47,0.0
+Ben Godfrey,8,0,43,0.0
+André Tavares Gomes,8,3,44,0.0
+Tim Ream,9,0,45,0.0
+Ben Johnson,18,0,44,0.0
+Manuel Benson Hedilazio,5,3,52,0.0
+Levi Colwill,6,0,47,0.0
+Jonathan Panzo,15,0,40,0.0
+Pablo Fornals Malla,18,3,46,0.0
+Elijah Adebayo,11,1,49,0.0
+Rico Henry,3,0,43,0.0
+Owen Beck,10,0,45,0.0
+Bobby Clark,10,3,44,0.0
+Flynn Downes,18,3,50,0.0
+Ben Greenwood,2,0,40,0.0
+Alfie Dorrington,17,0,40,0.0
+Joe Willock,14,3,53,0.0
+Javier Manquillo Gaitán,14,0,40,0.0
+Kobbie Mainoo,13,3,44,0.0
+Dominic Calvert-Lewin,8,1,58,0.0
+Tommy Doyle,19,3,44,0.0
+Halil Dervişoğlu,3,1,45,0.0
+Gabriel Osho,11,0,44,0.0
+João Pedro Junqueira de Jesus,4,1,54,0.0
+Vincent Angelini,3,2,40,0.0
+Kurt Zouma,18,0,45,0.0
+Pedro Porro,17,0,59,0.0
+Darren Randolph,2,2,40,0.0
+Destiny Udogie,17,0,49,0.0
+Joe Gomez,10,0,46,0.0
+Ryan Trevitt,3,3,45,0.0
+Dion Pereira,11,3,44,0.0
+Tayo Adaramola,7,0,40,0.0
+Connor Roberts,5,0,43,0.0
+Mark Flekken,3,2,45,0.0
+Martin Dubravka,14,2,42,0.0
+James McConnell,10,3,44,0.0
+Stefan Bajcetic,10,3,47,0.0
+Andreas Hoelgebaum Pereira,9,3,53,0.0
+Joseph Johnson,11,0,40,0.0
+Marc Cucurella Saseta,6,0,48,0.0
+João Palhinha Gonçalves,9,3,50,0.0
+Bryan Gil Salvatierra,17,3,49,0.0
+Neco Williams,15,0,43,0.0
+Harrison Ashby,14,0,40,0.0
+Billy Gilmour,4,3,49,0.0
+John Egan,16,0,43,0.0
+Mikkel Damsgaard,3,3,48,0.0
+Angelo Ogbonna,18,0,43,0.0
+Chris Basham,16,0,39,0.0
+Son Heung-min,17,3,96,0.0
+Phil Foden,12,3,80,0.0
+Kieran Tierney,0,0,44,0.0
+Gonçalo Manuel Ganchinho Guedes,19,3,54,0.0
+Amad Diallo,13,3,44,0.0
+Oliver Norwood,16,3,48,0.0
+Harry Toffolo,15,0,44,0.0
+Bernardo Veiga de Carvalho e Silva,12,3,64,0.0
+Charlie Taylor,5,0,40,0.0
+Adam Wharton,7,3,50,0.0
+Ji-Soo Kim,3,0,40,0.0
+Nuno Varela Tavares,15,0,40,0.0
+Alex Murphy,14,0,39,0.0
+Eddie Nketiah,0,1,52,0.0
+Benoît Badiashile,6,0,44,0.0
+Emile Smith Rowe,0,3,53,0.0
+Jarell Quansah,10,0,40,0.0
+Ben Chilwell,6,0,54,0.0
+Philippe Coutinho Correia,1,3,58,0.0
+Tim Iroegbunam,1,3,44,0.0
+Andy Lonergan,8,2,39,0.0
+Carlos Baleba,4,3,45,0.0
+Pablo Sarabia,19,3,47,0.0
+Kieffer Moore,2,1,46,0.0
+Wayne Hennessey,15,2,40,0.0
+Remi Matthews,7,2,39,0.0
+Kaelan Casey,18,0,40,0.0
+Ben Osborn,16,3,48,0.0
+Joelinton Cássio Apolinário de Lira,14,3,58,0.0
+Joe Gardner,15,1,45,0.0
+Radek Vítek,13,2,40,0.0
+Jack Hinshelwood,4,3,45,0.0
+Jadon Sancho,13,3,67,0.0
+Divock Origi,15,1,50,0.0
+Rhys Norrington-Davies,16,0,39,0.0
+Vitaly Janelt,3,3,53,0.0
+Ionuț Radu,2,2,44,0.0
+Andre Brooks,16,3,44,0.0
+Jack Grealish,12,3,72,0.0
+Emil Krafth,14,0,44,0.0
+Boubacar Traoré,19,3,43,0.0
+Denis Franchi,5,2,39,0.0
+James Shea,11,2,43,0.0
+Curtis Jones,10,3,49,0.0
+Myles Lewis-Skelly,0,3,45,0.0
+Devan Tanton,9,0,40,0.0
+Reece James,6,0,53,0.0
+Brandon Austin,17,2,39,0.0
+Anssumane Fati Vieira,4,3,64,0.0
+Robin Olsen,1,2,39,0.0
+Fabian Mrozek,10,2,40,0.0
+Ibrahima Konaté,10,0,49,0.0
+Travis Hernes,14,3,45,0.0
+Arnaut Danjuma Groeneveld,8,3,52,0.0
+Ezri Konsa Ngoyo,1,0,46,0.0
+Thomas Partey,0,3,48,0.0
+Jayden Luker,11,3,45,0.0
+Jamal Lewis,14,0,40,0.0
+Leon Bailey,1,3,56,0.0
+Jonny Evans,13,0,40,0.0
+Ethan Horvath,15,2,43,0.0
+Luke Plange,7,1,45,0.0
+Luke Shaw,13,0,52,0.0
+Oliver Scarles,18,0,40,0.0
+Mario Lemina,19,3,49,0.0
+Andi Zeqiri,4,1,44,0.0
+James Tarkowski,8,0,46,0.0
+Kristoffer Ajer,3,0,44,0.0
+Jake O'Brien,7,0,40,0.0
+Eddie Beach,6,2,40,0.0
+Ryan Sessegnon,17,0,44,0.0
+Justin Kluivert,2,3,46,0.0
+Viljami Sinisalo,1,2,40,0.0
+Pierre-Emile Højbjerg,17,3,52,0.0
+Lesley Ugochukwu,6,3,44,0.0
+Jadan Raymond,7,3,45,0.0
+Luis Sinisterra,2,3,55,0.0
+Teden Mengi,11,0,39,0.0
+Marcus Tavernier,2,3,54,0.0
+Leigh Kavanagh,4,0,40,0.0
+Matthew Cox,3,2,40,0.0
+Manuel Akanji,12,0,49,0.0
+Matheus França de Oliveira,7,3,48,0.0
+Justin Hubner,19,0,40,0.0
+Lucas Tolentino Coelho de Lima,18,3,60,0.0
+Luca Koleosho,5,3,48,0.0
+Rayan Aït-Nouri,19,0,45,0.0
+Calum Chambers,1,0,38,0.0
+Ben Davies,17,0,43,0.0
+Emerson Palmieri dos Santos,18,0,45,0.0
+Lawrence Vigouroux,5,2,39,0.0
+Jakub Moder,4,3,44,0.0
+Tommi O'Reilly,1,3,45,0.0
+Dara Costelloe,5,3,45,0.0
+Ashley Phillips,17,0,40,0.0
+John Stones,12,0,53,0.0
+Idrissa Gueye,8,3,48,0.0
+Harry Wilson,9,3,53,0.0
+Marcus Bettinelli,6,2,40,0.0
+Malcolm Ebiowei,7,3,44,0.0
+Benjamin White,0,0,56,0.0
+Omar Richards,15,0,44,0.0
+Mark O’Mahony,4,1,45,0.0
+Iliman Ndiaye,16,1,55,0.0
+Jayden Bogle,16,0,45,0.0
+Nick Pope,14,2,53,0.0
+Kai Havertz,0,3,71,0.0
+Wesley Moraes Ferreira da Silva,1,1,50,0.0
+Vladimír Coufal,18,0,46,0.0
+Marcus Rashford,13,3,84,0.0
+Lewis O'Brien,15,3,49,0.0
+Evan Ferguson,4,1,58,0.0
+Tom McGill,4,2,39,0.0
+Yves Bissouma,17,3,50,0.0
+João Victor Gomes da Silva,19,3,49,0.0
+Abdoulaye Doucouré,8,3,55,0.0
+Enes Ünal,2,1,50,0.0
+Ederson Santana de Moraes,12,2,55,0.0
+Morgan Rogers,1,3,50,0.0
+Virgil van Dijk,10,0,63,0.0
+Willy Boly,15,0,45,0.0
+Mohammed Kudus,18,3,68,0.0
+Andrew Omobamidele,15,0,45,0.0
+Kaine Kesler-Hayden,1,0,40,0.0
+Rico Lewis,12,0,43,0.0
+Alejandro Garnacho,13,3,49,0.0
+Jason Steele,4,2,42,0.0
+John McAtee,11,1,45,0.0
+Jean-Philippe Gbamin,8,3,44,0.0
+Norberto Bercique Gomes Betuncal,8,1,57,0.0
+Sam Johnstone,7,2,45,0.0
+Zack Nelson,11,3,45,0.0
+Yerson Mosquera,19,0,40,0.0
+Emiliano Buendía Stati,1,3,57,0.0
+Alexandre Moreno Lopera,1,0,51,0.0
+Japhet Tanganga,17,0,40,0.0
+Marvelous Nakamba,11,3,44,0.0
+Nathan Collins,3,0,45,0.0
+Antony Matheus dos Santos,13,3,68,0.0
+Trevoh Chalobah,6,0,43,0.0
+Luke Cundle,19,3,45,0.0
+Lukasz Fabianski,18,2,42,0.0
+Ethan Nwaneri,0,3,45,0.0
+Callum Marshall,18,1,45,0.0
+Tino Livramento,14,0,42,0.0
+Fodé Ballo-Touré,9,0,45,0.0
+Aymeric Laporte,12,0,49,0.0
+Tyler Adams,2,3,49,0.0
+Kieran Trippier,14,0,68,0.0
+Jamie McDonnell,15,3,45,0.0
+Richarlison de Andrade,17,3,72,0.0
+Jean-Ricner Bellegarde,19,3,49,0.0
+Lewis Dobbin,8,3,45,0.0
+Elliot Thorpe,11,3,45,0.0
+Alejo Véliz,17,1,54,0.0
+Mark Travers,2,2,40,0.0
+Leo Castledine,6,3,45,0.0
+Tawanda Chirewa,19,3,44,0.0
+Sam Proctor,1,2,40,0.0
+Guglielmo Vicario,17,2,53,0.0
+Isaac Hayden,14,3,44,0.0
+Mike Trésor,5,3,53,0.0
+Jamaal Lascelles,14,0,41,0.0
+Andrew Robertson,10,0,64,0.0
+Giovani Lo Celso,17,3,48,0.0
+Jeffrey Schlupp,7,3,49,0.0
+Alex Iwobi,9,3,53,0.0
+Cody Gakpo,10,1,72,0.0
+Nicolas Jackson,6,1,68,0.0
+Nikola Vlašić,18,3,45,0.0
+Adam Lallana,4,3,49,0.0
+Josh Brooking,6,0,40,0.0
+Alphonse Areola,18,2,42,0.0
+Alisson Ramses Becker,10,2,57,0.0
+Aribim Pepple,11,1,45,0.0
+Matt Doherty,19,0,43,0.0
+Kepa Arrizabalaga,6,2,50,0.0
+Luke Chambers,10,0,40,0.0
+Jenson Metcalfe,8,3,45,0.0
+Charlie Goode,3,0,39,0.0
+Riyad Mahrez,12,3,75,0.0
+Matija Šarkić,19,2,40,0.0
+Auston Trusty,16,0,39,0.0
+Anthony Gordon,14,3,61,0.0
+Emmanuel Dennis,15,1,48,0.0
+Nathaniel Clyne,7,0,44,0.0
+Thiago Alcántara do Nascimento,10,3,47,0.0
+Ethan Brierley,3,3,45,0.0
+Timo Werner,17,1,65,0.0
+Ryan Giles,11,0,42,0.0
+Admiral Muskwe,11,1,45,0.0
+Edson Álvarez Velázquez,18,3,50,0.0
+Jakub Kiwior,0,0,43,0.0
+Lloyd Kelly,2,0,45,0.0
+Vitalii Mykolenko,8,0,46,0.0
+Aidan Francis-Clarke,11,0,40,0.0
+Emerson Leite de Souza Junior,17,0,43,0.0
+Joël Veltman,4,0,43,0.0
+Miguel Almirón Rejala,14,3,61,0.0
+Bobby Thomas,5,0,40,0.0
+Yago de Santiago Alonso,17,3,45,0.0
+Stefan Ortega Moreno,12,2,38,0.0
+Matthew Whittingham,19,3,45,0.0
+Demarai Gray,8,3,53,0.0
+Facundo Pellistri Rebollo,13,3,42,0.0
+Bruno Cavaco Jordão,19,3,43,0.0
+Kjell Scherpen,4,2,40,0.0
+Máximo Perrone,12,3,44,0.0
+Aleksandar Mitrović,9,1,74,0.0
+Kevin Schade,3,3,52,0.0
+Moussa Niakhaté,15,0,45,0.0
+Paul Dummett,14,0,39,0.0
+Rodrigo Duarte Ribeiro,15,1,45,0.0
+Sven Botman,14,0,45,0.0
+Issa Diop,9,0,44,0.0
+Aaron Ramsdale,0,2,45,0.0
+Tosin Adarabioyo,9,0,43,0.0
+Trent Alexander-Arnold,10,0,86,0.0
+Anass Zaroury,5,3,46,0.0
+Pervis Estupiñán,4,0,51,0.0
+Enso González,19,3,50,0.0
+Chiedozie Ogbene,11,1,49,0.0
+Romain Faivre,2,3,50,0.0
+Harvey Elliott,10,3,48,0.0
+Jack Robinson,16,0,43,0.0
+Detlef Esapa Osong,15,1,45,0.0
+James Hill,2,0,40,0.0
+Ibrahim Sangaré,15,3,49,0.0
+Matt Targett,14,0,42,0.0
+Max Kinsey-Wellings,2,0,40,0.0
+Shea Charles,12,3,45,0.0
+Joe Rodon,17,0,40,0.0
+Neal Maupay,3,1,49,0.0
+Jordan Ayew,7,3,54,0.0
+Divin Mubama,18,1,42,0.0
+Nathaniel Phillips,10,0,40,0.0
+Dominik Szoboszlai,10,3,71,0.0
+Ryan Oné,16,3,44,0.0
+Kristian Sekularac,9,3,45,0.0
+Jordan Clark,11,3,48,0.0
+Elijah Campbell,8,0,40,0.0
+Mason Mount,13,3,68,0.0
+Ellery Balcombe,3,2,39,0.0
+David Brooks,2,3,47,0.0
+John McGinn,1,3,55,0.0
+Treymaurice Nyoni,10,3,45,0.0
+Tanguy Ndombélé Alvaro,17,3,44,0.0
+Ben Parkinson,14,1,45,0.0
+Jairo Riedewald,7,3,43,0.0
+Yoane Wissa,3,1,56,0.0
+Reiss Nelson,0,3,48,0.0
+Gabriel Martinelli Silva,0,3,77,0.0
+Wout Weghorst,5,1,55,0.0
+Jhon Durán,1,1,50,0.0
+Oscar Bobb,12,3,44,0.0
+Granit Xhaka,0,3,60,0.0
+James Trafford,5,2,45,0.0
+Dan Burn,14,0,44,0.0
+Saïd Benrahma,18,3,56,0.0
+Brandon Aguilera Zamora,15,3,45,0.0
+Dominic Sadi,2,3,45,0.0
+Tyler Onyango,8,3,44,0.0
+Mahamadou Susoho,12,3,45,0.0
+Joe Taylor,11,1,45,0.0
+Gustavo Hamer,16,3,50,0.0
+Karl Darlow,14,2,40,0.0
+Saman Ghoddos,3,3,45,0.0
+Joachim Andersen,7,0,48,0.0
+Alfie Gilchrist,6,0,40,0.0
+Allan Campbell,11,3,49,0.0
+Carlos Mendes Gomes,11,3,45,0.0
+Pedro Lomba Neto,19,3,57,0.0
+Luc De Fougerolles,9,0,39,0.0
+Dane Scarlett,17,1,45,0.0
+Lucas Digne,1,0,46,0.0
+Ben Brereton,16,3,50,0.0
+Jay Rodriguez,5,1,53,0.0
+Dean Henderson,7,2,44,0.0
+Aaron Connolly,4,1,45,0.0
+Alex Mighten,15,3,44,0.0
+Michail Antonio,18,1,57,0.0
+Jamie Donley,17,1,45,0.0
+Malang Sarr,6,0,43,0.0
+Ângelo Gabriel Borges Damaceno,6,3,50,0.0
+Micky van de Ven,17,0,44,0.0
+Adama Traoré,9,3,49,0.0
+Shola Shoretire,13,1,44,0.0
+Ademola Ola-Adebomi,7,1,45,0.0
+Lisandro Martínez,13,0,47,0.0
+Bryan Mbeumo,3,3,68,0.0
+Karl Hein,0,2,40,0.0
+Nicolas Pépé,0,3,49,0.0
+Mauro Bandeira,0,3,45,0.0
+Alexis Mac Allister,10,3,58,0.0
+David Ozoh,7,3,45,0.0
+Sydie Peck,16,3,44,0.0
+Omari Kellyman,1,3,45,0.0
+Youri Tielemans,1,3,56,0.0
+Remo Freuler,15,3,49,0.0
+Illia Zabarnyi,2,0,44,0.0
+Mads Bech Sørensen,3,0,40,0.0

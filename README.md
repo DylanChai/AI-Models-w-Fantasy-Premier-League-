@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [![GitSpo Mentions](https://gitspo.com/badges/mentions/vaastav/Fantasy-Premier-League?style=flat-square)](https://gitspo.com/mentions/vaastav/Fantasy-Premier-League)
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?hosted_button_id=RQ2V64LXSKPV4)
 
@@ -179,3 +180,6 @@ This will create a new folder called "team_<team_id>_data18-19" with individual 
 + [FPL Manager Medals by Edward F](https://fpl-manager-medals.streamlit.app/)
 
 + [SiegFPL by @infinitetrooper](https://fpl.infinitetrooper.com/)
+=======
+# AI-Models-w-Fantasy-Premier-League-
+>>>>>>> be1d2428ec5cc0e08cfe31f5ea63b54fd7c5eec4
