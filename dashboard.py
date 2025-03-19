@@ -6,15 +6,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.patches as patches
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
 
 # Set Streamlit page config
 st.set_page_config(page_title="FPL Predictions", layout="wide", initial_sidebar_state="expanded")
 
 # File paths
-assists_path = r"C:\Users\Dylan\FinalYearProject\Fantasy-Premier-League\GW_highest_Predicted_assists.csv"
-goals_path = r"C:\Users\Dylan\FinalYearProject\Fantasy-Premier-League\GW_highest_Predicted_goals.csv"
-cards_path = r"C:\Users\Dylan\FinalYearProject\Fantasy-Premier-League\GW25_Predicted_Cards.csv"
-clean_sheets_path = r"C:\Users\Dylan\FinalYearProject\Fantasy-Premier-League\GW25_Predicted_Clean_Sheets.csv"
+assists_path = "GW_highest_Predicted_assists.csv"
+goals_path = "GW_highest_Predicted_goals.csv"
+cards_path = "GW25_Predicted_Cards.csv"
+clean_sheets_path = "GW25_Predicted_Clean_Sheets.csv"
 
 # Custom Streamlit styles
 st.markdown(
@@ -97,9 +99,163 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Prediction generation functions
+def generate_goals_predictions():
+    """Generate goals predictions if the CSV doesn't exist"""
+    data_path = "data/2024-25/gws/merged_gw_cleaned.csv"
+    
+    try:
+        # Check if data file exists
+        if not os.path.exists(data_path):
+            st.error(f"Data file not found: {data_path}")
+            return pd.DataFrame(columns=["name", "team", "GW", "predicted_goals"])
+        
+        # Load the data
+        data = pd.read_csv(data_path, engine='python', on_bad_lines='skip')
+        
+        # Use GW 1-24 for training
+        train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+        
+        if train_data.empty:
+            st.error("No training data found for GW 1-24.")
+            return pd.DataFrame(columns=["name", "team", "GW", "predicted_goals"])
+        
+        # Select features for goals prediction
+        features = [
+            "minutes", "xP", "threat", "bps", "transfers_in"
+        ]
+        
+        # Add expected_goals if available
+        if "expected_goals" in train_data.columns:
+            features.append("expected_goals")
+        
+        # Ensure all needed columns exist
+        for col in features + ["goals_scored"]:
+            if col not in train_data.columns:
+                st.warning(f"Column {col} not found in data. Using simplified model.")
+                # Fallback to basic features
+                features = [col for col in ["minutes", "bps", "threat"] if col in train_data.columns]
+                if not features:
+                    return pd.DataFrame(columns=["name", "team", "GW", "predicted_goals"])
+                break
+        
+        target = "goals_scored"
+        
+        # Prepare data
+        train_data = train_data.dropna(subset=features + [target])
+        for col in features + [target]:
+            train_data[col] = pd.to_numeric(train_data[col], errors='coerce')
+        
+        # Split and train
+        X = train_data[features]
+        y = train_data[target]
+        model = RandomForestRegressor(n_estimators=100, random_state=42)
+        model.fit(X, y)
+        
+        # Prepare GW 25 data
+        numeric_columns = train_data.select_dtypes(include=[np.number]).columns.tolist()
+        gw25_data = train_data.groupby(["name", "team"])[numeric_columns].mean().reset_index()
+        gw25_data["GW"] = 25
+        
+        # Predict and filter
+        X_future = gw25_data[features]
+        gw25_data["predicted_goals"] = model.predict(X_future)
+        gw25_data = gw25_data[gw25_data["predicted_goals"] > 0]
+        gw25_data_sorted = gw25_data.sort_values(by="predicted_goals", ascending=False)
+        
+        # Save results
+        result_df = gw25_data_sorted[["name", "team", "GW", "predicted_goals"]]
+        result_df.to_csv(goals_path, index=False)
+        return result_df
+        
+    except Exception as e:
+        st.error(f"Error generating goals predictions: {e}")
+        return pd.DataFrame(columns=["name", "team", "GW", "predicted_goals"])
+
+def generate_assists_predictions():
+    """Generate assists predictions if the CSV doesn't exist"""
+    data_path = "data/2024-25/gws/merged_gw_cleaned.csv"
+    
+    try:
+        # Check if data file exists
+        if not os.path.exists(data_path):
+            st.error(f"Data file not found: {data_path}")
+            return pd.DataFrame(columns=["name", "team", "GW", "predicted_assists"])
+        
+        # Load the data
+        data = pd.read_csv(data_path, engine='python', on_bad_lines='skip')
+        
+        # Use GW 1-24 for training
+        train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+        
+        if train_data.empty:
+            st.error("No training data found for GW 1-24.")
+            return pd.DataFrame(columns=["name", "team", "GW", "predicted_assists"])
+        
+        # Select features for assists prediction
+        assists_features = [
+            "minutes", "creativity", "bps", "total_points", "influence"
+        ]
+        
+        # Add expected_assists if available
+        if "expected_assists" in train_data.columns:
+            assists_features.append("expected_assists")
+        
+        # Add expected_goal_involvements if available
+        if "expected_goal_involvements" in train_data.columns:
+            assists_features.append("expected_goal_involvements")
+        
+        # Ensure all needed columns exist
+        for col in assists_features + ["assists"]:
+            if col not in train_data.columns:
+                st.warning(f"Column {col} not found in data. Using simplified model.")
+                # Fallback to basic features
+                assists_features = [col for col in ["minutes", "bps", "creativity"] if col in train_data.columns]
+                if not assists_features:
+                    return pd.DataFrame(columns=["name", "team", "GW", "predicted_assists"])
+                break
+        
+        target_assists = "assists"
+        
+        # Prepare data
+        train_data = train_data.dropna(subset=assists_features + [target_assists])
+        for col in assists_features + [target_assists]:
+            train_data[col] = pd.to_numeric(train_data[col], errors='coerce')
+        
+        # One-hot encode position if available
+        if "position" in train_data.columns:
+            train_data = pd.get_dummies(train_data, columns=["position"])
+            position_cols = [col for col in train_data.columns if col.startswith("position_")]
+            assists_features.extend(position_cols)
+        
+        # Split and train
+        X_assists = train_data[assists_features]
+        y_assists = train_data[target_assists]
+        model_assists = RandomForestRegressor(n_estimators=100, random_state=42)
+        model_assists.fit(X_assists, y_assists)
+        
+        # Prepare GW 25 data
+        gw25_data_assists = train_data.groupby(["name", "team"])[assists_features].mean().reset_index()
+        gw25_data_assists["GW"] = 25
+        
+        # Predict and sort
+        X_future_assists = gw25_data_assists[assists_features]
+        gw25_data_assists["predicted_assists"] = model_assists.predict(X_future_assists)
+        gw25_data_assists["predicted_assists"] = np.clip(gw25_data_assists["predicted_assists"], 0, None)
+        gw25_data_assists_sorted = gw25_data_assists.sort_values(by="predicted_assists", ascending=False)
+        
+        # Save results
+        result_df = gw25_data_assists_sorted[["name", "team", "GW", "predicted_assists"]]
+        result_df.to_csv(assists_path, index=False)
+        return result_df
+        
+    except Exception as e:
+        st.error(f"Error generating assists predictions: {e}")
+        return pd.DataFrame(columns=["name", "team", "GW", "predicted_assists"])
+
 # Position data for players (can be loaded from another file if available)
 def load_position_data():
-    position_path = r"C:\Users\Dylan\FinalYearProject\Fantasy-Premier-League\data\2024-25\players_raw.csv"
+    position_path = "data/2024-25/players_raw.csv"
     if os.path.exists(position_path):
         try:
             players_raw = pd.read_csv(position_path)
@@ -451,86 +607,103 @@ if not files_exist:
         ```
         """
     )
-else:
     # Load all available data
-    assists_df = pd.read_csv(assists_path)
+# Check if files exist, generate if needed
+if not os.path.exists(goals_path):
+    st.info("Generating goals predictions...")
+    goals_df = generate_goals_predictions()
+else:
     goals_df = pd.read_csv(goals_path)
+
+if not os.path.exists(assists_path):
+    st.info("Generating assists predictions...")
+    assists_df = generate_assists_predictions()
+else:
+    assists_df = pd.read_csv(assists_path)
+
+if cards_exist:
+    cards_df = pd.read_csv(cards_path)
+else:
+    cards_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_cards"])
+
+if clean_sheets_exist:
+    clean_sheets_df = pd.read_csv(clean_sheets_path)
+else:
+    clean_sheets_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_clean_sheets"])
+
+# Ensure column names are consistent for merging
+if 'predicted_assists' not in assists_df.columns and 'assists' in assists_df.columns:
+    assists_df.rename(columns={'assists': 'predicted_assists'}, inplace=True)
+
+if 'predicted_goals' not in goals_df.columns and 'goals_scored' in goals_df.columns:
+    goals_df.rename(columns={'goals_scored': 'predicted_goals'}, inplace=True)
+
+if cards_exist and 'predicted_cards' not in cards_df.columns and 'total_cards' in cards_df.columns:
+    cards_df.rename(columns={'total_cards': 'predicted_cards'}, inplace=True)
+
+if clean_sheets_exist and 'predicted_clean_sheets' not in clean_sheets_df.columns and 'clean_sheets' in clean_sheets_df.columns:
+    clean_sheets_df.rename(columns={'clean_sheets': 'predicted_clean_sheets'}, inplace=True)
+
+# Load position data regardless of clean sheets existence
+positions_df = load_position_data()
+
+# ---- DASHBOARD HEADER ----
+st.title("⚽ Fantasy Premier League AI Predictions")
+st.write("Advanced analytics and predictions for Gameweek 25 using machine learning models")
+
+# ---- SIDEBAR FILTERS ----
+st.sidebar.header("Filters")
+
+# Team filter
+teams = sorted(set(assists_df["team"].unique()) | set(goals_df["team"].unique()))
+if cards_exist:
+    teams = sorted(set(teams) | set(cards_df["team"].unique()))
+if clean_sheets_exist:
+    teams = sorted(set(teams) | set(clean_sheets_df["team"].unique()))
+
+selected_team = st.sidebar.selectbox("Team", ["All Teams"] + teams)
+
+# Fix position types before sorting
+if positions_df is not None:
+    # Convert position values to strings to avoid comparison errors
+    positions_df["position"] = positions_df["position"].astype(str)
     
-    if cards_exist:
-        cards_df = pd.read_csv(cards_path)
-    else:
-        cards_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_cards"])
-        
-    if clean_sheets_exist:
-        clean_sheets_df = pd.read_csv(clean_sheets_path)
-    else:
-        clean_sheets_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_clean_sheets"])
+    # Define preferred position order
+    position_order = {"GKP": 1, "DEF": 2, "MID": 3, "FWD": 4}
     
-    # Load position data
-    positions_df = load_position_data()
+    # Get unique positions
+    unique_positions = positions_df["position"].unique()
     
-    # Ensure column names are consistent for merging
-    if 'predicted_assists' not in assists_df.columns and 'assists' in assists_df.columns:
-        assists_df.rename(columns={'assists': 'predicted_assists'}, inplace=True)
+    # Try to sort positions safely
+    try:
+        # Sort by custom position order if possible
+        ordered_positions = sorted(
+            [pos for pos in unique_positions if pos in position_order],
+            key=lambda x: position_order.get(x, 999)
+        )
         
-    if 'predicted_goals' not in goals_df.columns and 'goals_scored' in goals_df.columns:
-        goals_df.rename(columns={'goals_scored': 'predicted_goals'}, inplace=True)
-        
-    if cards_exist and 'predicted_cards' not in cards_df.columns and 'total_cards' in cards_df.columns:
-        cards_df.rename(columns={'total_cards': 'predicted_cards'}, inplace=True)
-        
-    if clean_sheets_exist and 'predicted_clean_sheets' not in clean_sheets_df.columns and 'clean_sheets' in clean_sheets_df.columns:
-        clean_sheets_df.rename(columns={'clean_sheets': 'predicted_clean_sheets'}, inplace=True)
+        # Add any other positions that don't match the standard ones
+        other_positions = [pos for pos in unique_positions if pos not in position_order]
+        positions = ordered_positions + sorted(other_positions)
+    except:
+        # Fallback if sorting fails
+        positions = ["GKP", "DEF", "MID", "FWD"]
+        st.sidebar.warning("Could not sort positions. Using default order.")
     
-    # ---- DASHBOARD HEADER ----
-    st.title("⚽ Fantasy Premier League AI Predictions")
-    st.write("Advanced analytics and predictions for Gameweek 25 using machine learning models")
-    
-    # ---- SIDEBAR FILTERS ----
-    st.sidebar.header("Filters")
-    
-    # Team filter
-    teams = sorted(set(assists_df["team"].unique()) | set(goals_df["team"].unique()))
-    if cards_exist:
-        teams = sorted(set(teams) | set(cards_df["team"].unique()))
-    if clean_sheets_exist:
-        teams = sorted(set(teams) | set(clean_sheets_df["team"].unique()))
-        
-    selected_team = st.sidebar.selectbox("Team", ["All Teams"] + teams)
-    
-    # Fix position types before sorting
-    if positions_df is not None:
-        # Convert position values to strings to avoid comparison errors
-        positions_df["position"] = positions_df["position"].astype(str)
-        
-        # Define preferred position order
-        position_order = {"GKP": 1, "DEF": 2, "MID": 3, "FWD": 4}
-        
-        # Get unique positions
-        unique_positions = positions_df["position"].unique()
-        
-        # Try to sort positions safely
-        try:
-            # Sort by custom position order if possible
-            ordered_positions = sorted(
-                [pos for pos in unique_positions if pos in position_order],
-                key=lambda x: position_order.get(x, 999)
-            )
-            
-            # Add any other positions that don't match the standard ones
-            other_positions = [pos for pos in unique_positions if pos not in position_order]
-            positions = ordered_positions + sorted(other_positions)
-        except:
-            # Fallback if sorting fails
-            positions = ["GKP", "DEF", "MID", "FWD"]
-            st.sidebar.warning("Could not sort positions. Using default order.")
-        
-        selected_position = st.sidebar.selectbox("Position", ["All Positions"] + positions)
-    else:
-        selected_position = "All Positions"
-    
-    # Metric threshold sliders
-    st.sidebar.header("Thresholds")
+    selected_position = st.sidebar.selectbox("Position", ["All Positions"] + positions)
+else:
+    selected_position = "All Positions"
+
+# Metric threshold sliders
+st.sidebar.header("Thresholds")
+
+# Add regenerate button
+if st.sidebar.button("Regenerate Predictions"):
+    st.sidebar.info("Regenerating predictions...")
+    goals_df = generate_goals_predictions()
+    assists_df = generate_assists_predictions()
+    st.sidebar.success("Predictions regenerated! Refresh the page to see updates.")
+
     
     min_goals = st.sidebar.slider("Minimum Goals", 0.0, 1.0, 0.0, 0.1)
     min_assists = st.sidebar.slider("Minimum Assists", 0.0, 1.0, 0.0, 0.1)
@@ -1176,3 +1349,4 @@ else:
     Fantasy Premier League AI Predictions Dashboard | Created using Streamlit and machine learning models | Data refreshed for GW25
     </div>
     """, unsafe_allow_html=True)
+
