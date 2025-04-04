@@ -23,15 +23,15 @@ def main():
     print("Columns in merged_gw_cleaned.csv:", data.columns.tolist())
     print("Sample rows:\n", data.head())
 
-    # 2. Use GW 1-24 for training
-    train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+    # 2. Update training data to use GW 1-30
+    train_data = data[(data["GW"] >= 1) & (data["GW"] <= 30)]
 
     # Check if training data is available
     if train_data.empty:
-        print("No training data found for GW 1-24 in merged_gw_cleaned.csv.")
+        print("No training data found for GW 1-30 in merged_gw_cleaned.csv.")
         return
 
-    print(f"Training data shape (GW 1-24): {train_data.shape}")
+    print(f"Training data shape (GW 1-30): {train_data.shape}")
 
     # 3. Select features & target
     features = [
@@ -75,29 +75,29 @@ def main():
     mae = mean_absolute_error(y_test, predictions_test)
     print("Mean Absolute Error (MAE) on the test set:", mae)
 
-    # 7. Prepare GW 25 data for prediction
+    # 7. Prepare GW 31 data for prediction
     # Group by player and team, but only include numeric columns for averaging
     numeric_columns = train_data.select_dtypes(include=[np.number]).columns.tolist()
-    gw25_data = train_data.groupby(["name", "team"])[numeric_columns].mean().reset_index()
-    gw25_data["GW"] = 25  # Add a column for GW 25
+    gw31_data = train_data.groupby(["name", "team"])[numeric_columns].mean().reset_index()
+    gw31_data["GW"] = 31  # Updated to GW 31
 
-    # Ensure the features are present in the GW 25 data
-    X_future = gw25_data[features]
+    # Ensure the features are present in the GW 31 data
+    X_future = gw31_data[features]
 
-    # 8. Predict goals for GW 25
-    gw25_data["predicted_goals"] = model.predict(X_future)
+    # 8. Predict goals for GW 31
+    gw31_data["predicted_goals"] = model.predict(X_future)
 
     # 9. Filter out rows with predicted_goals equal to 0
-    gw25_data = gw25_data[gw25_data["predicted_goals"] > 0]
+    gw31_data = gw31_data[gw31_data["predicted_goals"] > 0]
 
     # 10. Sort by predicted_goals in descending order
-    gw25_data_sorted = gw25_data.sort_values(by="predicted_goals", ascending=False)
+    gw31_data_sorted = gw31_data.sort_values(by="predicted_goals", ascending=False)
 
     # 11. Save the sorted predictions to a new file
     out_path = "GW_highest_Predicted_goals.csv"
-    gw25_data_sorted.to_csv(out_path, index=False)
-    print(f"Sorted predictions (without 0 values) for GW 25 saved to {out_path}")
-    print("Sample predictions:\n", gw25_data_sorted[["name", "team", "GW", "predicted_goals"]].head(10))
+    gw31_data_sorted.to_csv(out_path, index=False)
+    print(f"Sorted predictions (without 0 values) for GW 31 saved to {out_path}")
+    print("Sample predictions:\n", gw31_data_sorted[["name", "team", "GW", "predicted_goals"]].head(10))
 
 if __name__ == "__main__":
     main()

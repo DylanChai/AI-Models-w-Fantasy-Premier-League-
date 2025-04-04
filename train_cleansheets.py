@@ -9,7 +9,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 def main():
-    print("Starting simplified clean sheets prediction model...")
+    print("Starting clean sheets prediction model...")
 
     # 1. Load the merged gameweek file using the cleaned CSV
     data_path = "data/2024-25/gws/merged_gw_cleaned.csv"
@@ -24,12 +24,12 @@ def main():
         print(f"Error reading CSV file: {e}")
         return
 
-    # 2. Use gameweeks 1-24 as training data
-    train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+    # 2. Updated to use gameweeks 1-30 as training data
+    train_data = data[(data["GW"] >= 1) & (data["GW"] <= 30)]
     if train_data.empty:
-        print("No training data found for GW 1-24.")
+        print("No training data found for GW 1-30.")
         return
-    print(f"Training data shape (GW 1-24): {train_data.shape}")
+    print(f"Training data shape (GW 1-30): {train_data.shape}")
 
     # 3. Convert columns to numeric
     for col in train_data.columns:
@@ -89,18 +89,18 @@ def main():
     mae = mean_absolute_error(y_test, preds)
     print(f"Model MAE: {mae:.4f}")
     
-    # 10. Get GW 25 predictions (using most recent data for each player)
-    print("Preparing GW 25 predictions...")
+    # 10. Get GW 31 predictions (using most recent data for each player) - UPDATED
+    print("Preparing GW 31 predictions...")
     
     # Group by player and team to get the most recent data
     latest_data = train_data.sort_values("GW", ascending=False).groupby(["name", "team"]).first().reset_index()
     
     # Select meaningful features
-    gw25_data = latest_data[["name", "team"] + clean_sheet_features].copy()
-    gw25_data["GW"] = 25
+    gw31_data = latest_data[["name", "team"] + clean_sheet_features].copy()
+    gw31_data["GW"] = 31  # Updated to GW 31
     
     # 11. Make predictions
-    X_future = gw25_data[clean_sheet_features]
+    X_future = gw31_data[clean_sheet_features]
     raw_predictions = model.predict(X_future)
     
     # 12. Scale predictions to realistic range (5% to 60%)
@@ -110,25 +110,26 @@ def main():
     min_prob, max_prob = 0.05, 0.60  # Realistic range for EPL clean sheets
     
     # Define team tiers (manual adjustment based on current form)
-    top_teams = ["Man City", "Arsenal", "Liverpool", "Aston Villa", "Brighton"]
+    # UPDATED: You may want to adjust these based on current season performance
+    top_teams = ["Man City", "Arsenal", "Liverpool","Nottingham Forest", "Bournemouth"]
     mid_teams = ["Newcastle", "Tottenham", "Chelsea", "Man Utd", "West Ham", 
-                "Crystal Palace", "Brentford", "Fulham", "Wolves"]
-    bottom_teams = ["Everton", "Bournemouth", "Nottingham Forest", "Ipswich", 
+                "Crystal Palace", "Brentford", "Fulham", "Wolves", "Brighton","Aston Villa"]
+    bottom_teams = ["Everton","Ipswich", 
                    "Leicester", "Southampton"]
     
     # Add team tier info
-    gw25_data["team_tier"] = 2  # Default to mid-tier
-    for idx, row in gw25_data.iterrows():
+    gw31_data["team_tier"] = 2  # Default to mid-tier
+    for idx, row in gw31_data.iterrows():
         team = row["team"]
         if any(team_name in team for team_name in top_teams):
-            gw25_data.at[idx, "team_tier"] = 1  # Top tier
+            gw31_data.at[idx, "team_tier"] = 1  # Top tier
         elif any(team_name in team for team_name in bottom_teams):
-            gw25_data.at[idx, "team_tier"] = 3  # Bottom tier
+            gw31_data.at[idx, "team_tier"] = 3  # Bottom tier
     
     # Scale predictions based on team tier
     scaled_predictions = []
     for i, pred in enumerate(raw_predictions):
-        tier = gw25_data.iloc[i]["team_tier"]
+        tier = gw31_data.iloc[i]["team_tier"]
         if tier == 1:  # Top tier
             # Scale to 0.35-0.60
             scaled = 0.35 + (pred / y.max()) * 0.25
@@ -145,10 +146,10 @@ def main():
         scaled_predictions.append(final_prob)
     
     # Add predictions to dataframe
-    gw25_data["predicted_clean_sheets"] = scaled_predictions
+    gw31_data["predicted_clean_sheets"] = scaled_predictions
     
     # 13. Sort and save results
-    result_df = gw25_data.sort_values(by="predicted_clean_sheets", ascending=False)
+    result_df = gw31_data.sort_values(by="predicted_clean_sheets", ascending=False)
     
     # Check distribution of predictions
     bins = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
@@ -159,7 +160,7 @@ def main():
         print(f"  {bins[i]:.1f}-{bins[i+1]:.1f}: {hist[i]} predictions")
     
     # Save only needed columns
-    out_path = "GW25_Predicted_Clean_Sheets.csv"
+    out_path = "GW31_Predicted_Clean_Sheets.csv"  # Updated filename
     result_df[["name", "team", "GW", "predicted_clean_sheets"]].to_csv(out_path, index=False)
     
     print(f"Saved predictions to {out_path}")

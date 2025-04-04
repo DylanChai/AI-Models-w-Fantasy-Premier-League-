@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor  # Changed to regressor instead of classifier
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 import os
 import warnings
@@ -25,12 +25,12 @@ def main():
         print(f"Error reading merged_gw_cleaned.csv: {e}")
         return
 
-    # 2. Use gameweeks 1-24 as training data
-    train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+    # 2. Update to use gameweeks 1-30 as training data
+    train_data = data[(data["GW"] >= 1) & (data["GW"] <= 30)]
     if train_data.empty:
-        print("No training data found for GW 1-24 in merged_gw_cleaned.csv.")
+        print("No training data found for GW 1-30 in merged_gw_cleaned.csv.")
         return
-    print(f"Training data shape (GW 1-24): {train_data.shape}")
+    print(f"Training data shape (GW 1-30): {train_data.shape}")
 
     # 3. Convert columns to numeric
     for col in train_data.columns:
@@ -117,30 +117,30 @@ def main():
     print(f"  Mean Absolute Error (MAE): {mae:.4f}")
     print(f"  Root Mean Squared Error (RMSE): {rmse:.4f}")
     
-    # 10. Prepare GW 25 data for prediction
+    # 10. Prepare GW 31 data for prediction (UPDATED)
     # Group by player and team, averaging all features
-    gw25_data_cards = train_data.groupby(["name", "team"])[card_features].mean().reset_index()
-    gw25_data_cards["GW"] = 25  # Set the gameweek to 25
+    gw31_data_cards = train_data.groupby(["name", "team"])[card_features].mean().reset_index()
+    gw31_data_cards["GW"] = 31  # Updated to GW 31
     
     # Use the full feature set for prediction
-    X_future_cards = gw25_data_cards[card_features].fillna(0)
+    X_future_cards = gw31_data_cards[card_features].fillna(0)
     
-    # 11. Predict cards for GW 25
-    gw25_data_cards["predicted_cards"] = model_cards.predict(X_future_cards)
+    # 11. Predict cards for GW 31
+    gw31_data_cards["predicted_cards"] = model_cards.predict(X_future_cards)
     
     # Ensure predictions are non-negative
-    gw25_data_cards["predicted_cards"] = np.clip(gw25_data_cards["predicted_cards"], 0, None)
+    gw31_data_cards["predicted_cards"] = np.clip(gw31_data_cards["predicted_cards"], 0, None)
     
     # 12. Sort the predictions by predicted_cards in descending order
-    gw25_data_cards_sorted = gw25_data_cards.sort_values(by="predicted_cards", ascending=False)
+    gw31_data_cards_sorted = gw31_data_cards.sort_values(by="predicted_cards", ascending=False)
     
     # 13. Save the sorted predictions to a CSV file
-    out_path = "GW25_Predicted_Cards.csv"
-    gw25_data_cards_sorted.to_csv(out_path, index=False)
+    out_path = "GW31_Predicted_Cards.csv"  # Updated filename
+    gw31_data_cards_sorted.to_csv(out_path, index=False)
     
-    print(f"Sorted predictions for GW 25 saved to {out_path}")
+    print(f"Sorted predictions for GW 31 saved to {out_path}")
     print("Top 10 players most likely to receive cards:")
-    print(gw25_data_cards_sorted[["name", "team", "GW", "predicted_cards"]].head(10))
+    print(gw31_data_cards_sorted[["name", "team", "GW", "predicted_cards"]].head(10))
     
     # 14. Feature importance
     feature_importance = pd.DataFrame({

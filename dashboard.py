@@ -15,8 +15,11 @@ st.set_page_config(page_title="FPL Predictions", layout="wide", initial_sidebar_
 # File paths
 assists_path = "GW_highest_Predicted_assists.csv"
 goals_path = "GW_highest_Predicted_goals.csv"
-cards_path = "GW25_Predicted_Cards.csv"
-clean_sheets_path = "GW25_Predicted_Clean_Sheets.csv"
+cards_path = "GW31_Predicted_Cards.csv"            # Updated from "GW25_Predicted_Cards.csv"
+clean_sheets_path = "GW31_Predicted_Clean_Sheets.csv"
+
+# Disable auto-regeneration to use externally generated prediction files
+auto_regenerate = False  # IMPORTANT: Set to False to prevent overwriting your improved CSVs
 
 # Custom Streamlit styles
 st.markdown(
@@ -114,7 +117,7 @@ def generate_goals_predictions():
         data = pd.read_csv(data_path, engine='python', on_bad_lines='skip')
         
         # Use GW 1-24 for training
-        train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+        train_data = data[(data["GW"] >= 1) & (data["GW"] <= 30)]
         
         if train_data.empty:
             st.error("No training data found for GW 1-24.")
@@ -154,17 +157,17 @@ def generate_goals_predictions():
         
         # Prepare GW 25 data
         numeric_columns = train_data.select_dtypes(include=[np.number]).columns.tolist()
-        gw25_data = train_data.groupby(["name", "team"])[numeric_columns].mean().reset_index()
-        gw25_data["GW"] = 25
+        gw31_data = train_data.groupby(["name", "team"])[numeric_columns].mean().reset_index()
+        gw31_data["GW"] = 30
         
         # Predict and filter
-        X_future = gw25_data[features]
-        gw25_data["predicted_goals"] = model.predict(X_future)
-        gw25_data = gw25_data[gw25_data["predicted_goals"] > 0]
-        gw25_data_sorted = gw25_data.sort_values(by="predicted_goals", ascending=False)
+        X_future = gw31_data[features]
+        gw31_data["predicted_goals"] = model.predict(X_future)
+        gw31_data = gw31_data[gw31_data["predicted_goals"] > 0]
+        gw31_data_sorted = gw31_data.sort_values(by="predicted_goals", ascending=False)
         
         # Save results
-        result_df = gw25_data_sorted[["name", "team", "GW", "predicted_goals"]]
+        result_df = gw31_data_sorted[["name", "team", "GW", "predicted_goals"]]
         result_df.to_csv(goals_path, index=False)
         return result_df
         
@@ -186,7 +189,9 @@ def generate_assists_predictions():
         data = pd.read_csv(data_path, engine='python', on_bad_lines='skip')
         
         # Use GW 1-24 for training
-        train_data = data[(data["GW"] >= 1) & (data["GW"] <= 24)]
+        train_data = data[(data["GW"] >= 1) & (data["GW"] <= 30
+        
+        )]
         
         if train_data.empty:
             st.error("No training data found for GW 1-24.")
@@ -235,17 +240,17 @@ def generate_assists_predictions():
         model_assists.fit(X_assists, y_assists)
         
         # Prepare GW 25 data
-        gw25_data_assists = train_data.groupby(["name", "team"])[assists_features].mean().reset_index()
-        gw25_data_assists["GW"] = 25
+        gw31_data_assists = train_data.groupby(["name", "team"])[assists_features].mean().reset_index()
+        gw31_data_assists["GW"] = 31
         
         # Predict and sort
-        X_future_assists = gw25_data_assists[assists_features]
-        gw25_data_assists["predicted_assists"] = model_assists.predict(X_future_assists)
-        gw25_data_assists["predicted_assists"] = np.clip(gw25_data_assists["predicted_assists"], 0, None)
-        gw25_data_assists_sorted = gw25_data_assists.sort_values(by="predicted_assists", ascending=False)
+        X_future_assists = gw31_data_assists[assists_features]
+        gw31_data_assists["predicted_assists"] = model_assists.predict(X_future_assists)
+        gw31_data_assists["predicted_assists"] = np.clip(gw31_data_assists["predicted_assists"], 0, None)
+        gw31_data_assists_sorted = gw31_data_assists.sort_values(by="predicted_assists", ascending=False)
         
         # Save results
-        result_df = gw25_data_assists_sorted[["name", "team", "GW", "predicted_assists"]]
+        result_df = gw31_data_assists_sorted[["name", "team", "GW", "predicted_assists"]]
         result_df.to_csv(assists_path, index=False)
         return result_df
         
@@ -451,7 +456,7 @@ def create_best_xi(merged_data, positions_data=None):
     
     ax.set_xlim(-0.5, 10.5)
     ax.set_ylim(-0.5, 10.5)
-    ax.set_title("Predicted Best XI - GW25", fontsize=16, fontweight='bold')
+    ax.set_title("Predicted Best XI - GW31", fontsize=16, fontweight='bold')
     ax.axis('off')
     
     return fig, best_xi
@@ -608,29 +613,38 @@ if not files_exist:
         """
     )
     # Load all available data
-# Check if files exist, generate if needed
-if not os.path.exists(goals_path):
-    st.info("Generating goals predictions...")
-    goals_df = generate_goals_predictions()
-else:
+# Load required data files - no auto-generation
+try:
     goals_df = pd.read_csv(goals_path)
+    print(f"Successfully loaded goals predictions from {goals_path}")
+except FileNotFoundError:
+    st.error(f"Required file not found: {goals_path}")
+    st.stop()  # Stop execution if file not found
 
-if not os.path.exists(assists_path):
-    st.info("Generating assists predictions...")
-    assists_df = generate_assists_predictions()
-else:
+try:
     assists_df = pd.read_csv(assists_path)
+    print(f"Successfully loaded assists predictions from {assists_path}")
+except FileNotFoundError:
+    st.error(f"Required file not found: {assists_path}")
+    st.stop()  # Stop execution if file not found
 
 if cards_exist:
-    cards_df = pd.read_csv(cards_path)
+    try:
+        cards_df = pd.read_csv(cards_path)
+    except FileNotFoundError:
+        st.warning(f"Cards predictions file not found. Will continue without cards data.")
+        cards_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_cards"])
 else:
     cards_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_cards"])
 
 if clean_sheets_exist:
-    clean_sheets_df = pd.read_csv(clean_sheets_path)
+    try:
+        clean_sheets_df = pd.read_csv(clean_sheets_path)
+    except FileNotFoundError:
+        st.warning(f"Clean sheets predictions file not found. Will continue without clean sheets data.")
+        clean_sheets_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_clean_sheets"])
 else:
     clean_sheets_df = pd.DataFrame(columns=["name", "team", "GW", "predicted_clean_sheets"])
-
 # Ensure column names are consistent for merging
 if 'predicted_assists' not in assists_df.columns and 'assists' in assists_df.columns:
     assists_df.rename(columns={'assists': 'predicted_assists'}, inplace=True)
@@ -649,8 +663,7 @@ positions_df = load_position_data()
 
 # ---- DASHBOARD HEADER ----
 st.title("⚽ Fantasy Premier League AI Predictions")
-st.write("Advanced analytics and predictions for Gameweek 25 using machine learning models")
-
+st.write("Advanced analytics and predictions for Gameweek 31 using machine learning models")
 # ---- SIDEBAR FILTERS ----
 st.sidebar.header("Filters")
 
@@ -699,15 +712,18 @@ st.sidebar.header("Thresholds")
 
 # Add regenerate button
 if st.sidebar.button("Regenerate Predictions"):
-    st.sidebar.info("Regenerating predictions...")
-    goals_df = generate_goals_predictions()
-    assists_df = generate_assists_predictions()
-    st.sidebar.success("Predictions regenerated! Refresh the page to see updates.")
-
+    if auto_regenerate:
+        st.sidebar.info("Regenerating predictions...")
+        goals_df = generate_goals_predictions()
+        assists_df = generate_assists_predictions()
+        st.sidebar.success("Predictions regenerated! Refresh the page to see updates.")
+    else:
+        st.sidebar.warning("Auto-regeneration is disabled. Please run your improved prediction scripts manually.")
     
     min_goals = st.sidebar.slider("Minimum Goals", 0.0, 1.0, 0.0, 0.1)
     min_assists = st.sidebar.slider("Minimum Assists", 0.0, 1.0, 0.0, 0.1)
     
+    # ... all your filtering and visualization code ...
     if cards_exist:
         max_cards = st.sidebar.slider("Maximum Cards", 0.0, 1.0, 1.0, 0.1)
     else:
